@@ -12,11 +12,7 @@
 		int scene = 1;
 
 float time = 0;
-time2 = 0;
 float base_time = 0;
-float base_timeA = 0;
-
-int f = 0;
 
 float n = 0;
 
@@ -96,40 +92,15 @@ void draw() {
 
 void timer() {
   if (base_time == 0) {
-      base_time = millis();
-    }
-    time = millis() - base_time;
-    time = time/1000;
-    //text("true_time:"+int(time), width/2, height/2-20);
-    if (time <= 360) {
-      f = 1;
-      time = time * 2/3;
-      //text("slow_time:"+int(time), width/2, height/2);
-      //text("slow", width/2, height/2-200);
-    }
-
-    if (time > 360) {
-      f = 2;
-      if (base_timeA == 0) {
-
-        base_timeA = millis();
-      }
-      time2 = millis() - base_timeA;
-      time2 = time2/1000;
-
-      time2 = time2 * 3/2;
-      time2 = time2 + 240;
-      //text("fast_time:"+int(t), width/2, height/2);
-      //text("fast", width/2, height/2-100);
-    }
+    base_time = millis();
+  }
+  time = millis() - base_time;
+  time = time/1000;
+  //text(time, width/2, height/2);
 }
 
 void makeProgressBar() {
-  if (f == 1) {
-    n = (600-time)/6;
-  } else if (f == 2) {
-    n = (600-time2)/6;
-  }
+  n = (600-time)/6;
   fill(0, 255, 0);
   for (int i = 0; i < n; i++) {
     if (scene == 2) {
